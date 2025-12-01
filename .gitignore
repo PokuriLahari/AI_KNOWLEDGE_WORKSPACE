@@ -1,0 +1,22 @@
+# Virtual env
+.venv/
+env/
+venv/
+
+# Local config / secrets
+.env
+
+# Streamlit / caches
+.streamlit/
+
+# Chroma DB + temp files
+chroma_db/
+tmp/
+
+# macOS
+.DS_Store
+*/.DS_Store
+
+# Python cache
+__pycache__/
+*.py[cod]
