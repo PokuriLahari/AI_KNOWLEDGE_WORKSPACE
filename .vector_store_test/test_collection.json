@@ -1,1 +1,0 @@
-[{"id": "23818550-f69d-4c57-9765-e056d9308e1c", "text": "Hello world", "embedding": {"hello": 0.5, "world": 0.5}, "source_file": "test.txt", "page_number": 1}, {"id": "ece6fbef-9c73-4b18-99dd-a4a6d338c6f0", "text": "This is a test", "embedding": {"this": 0.25, "is": 0.25, "a": 0.25, "test": 0.25}, "source_file": "test.txt", "page_number": 1}]
