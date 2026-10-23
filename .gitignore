@@ -9,8 +9,10 @@ venv/
 # Streamlit / caches
 .streamlit/
 
-# Chroma DB + temp files
+# Chroma DB + SQLite + temp files
 chroma_db/
+workspace.db
+*.db
 tmp/
 
 # macOS

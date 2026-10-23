@@ -8,7 +8,10 @@ openai
 sentence-transformers
 chromadb
 pypdf
+python-docx
+python-pptx
 python-multipart
 
 streamlit
 requests
+pytest
