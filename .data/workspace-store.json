@@ -1,0 +1,1214 @@
+{
+  "documents": [
+    {
+      "doc_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 126028,
+      "page_count": 49,
+      "chunk_count": 78,
+      "status": "indexed",
+      "indexed_at": "2026-10-25T11:40:24.023Z",
+      "summary_preview": "Section 6: Hackathon problems\nSOA Programming and Microservices / 24SDCS03 / 23 teams\nOne problem per team. Common requirements and CO guidance follow.\nEvery challenge includes fun...",
+      "tags": [
+        "PDF",
+        "Multi-Page",
+        "RAG Ready"
+      ]
+    },
+    {
+      "doc_id": "doc_arch_rag_v4",
+      "filename": "Architecture_Spec_v4.2_Distributed_RAG.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 2485120,
+      "page_count": 5,
+      "chunk_count": 5,
+      "status": "indexed",
+      "indexed_at": "2026-10-24T14:20:00Z",
+      "summary_preview": "The Distributed Multi-Agent Document Intelligence System (v4.2) implements a two-stage hybrid retrieval-augmented generation (RAG) pipeline designed for enterprise document workspa...",
+      "tags": [
+        "Architecture",
+        "Hybrid RAG",
+        "ChromaDB",
+        "Vector Search"
+      ]
+    },
+    {
+      "doc_id": "doc_sec_audit_q3",
+      "filename": "Q3_2026_Enterprise_Security_Compliance_Audit.docx",
+      "file_type": "docx",
+      "file_size_bytes": 1642800,
+      "page_count": 4,
+      "chunk_count": 4,
+      "status": "indexed",
+      "indexed_at": "2026-10-22T09:15:00Z",
+      "summary_preview": "This Q3 2026 Enterprise Security & Compliance Audit evaluates the AI Knowledge Workspace across Trust Services Criteria (Security, Availability, Processing Integrity, and Confident...",
+      "tags": [
+        "Security",
+        "SOC2 Type II",
+        "Compliance",
+        "Governance"
+      ]
+    },
+    {
+      "doc_id": "doc_infra_cost_2026",
+      "filename": "Cloud_Infrastructure_Cost_Benchmark_2026.csv",
+      "file_type": "csv",
+      "file_size_bytes": 518400,
+      "page_count": 3,
+      "chunk_count": 3,
+      "status": "indexed",
+      "indexed_at": "2026-10-23T11:40:00Z",
+      "summary_preview": "Provider_Cluster,Model_Tier,Median_TTFT_ms,P95_Latency_ms,Throughput_Tokens_Sec,Cost_Per_1M_Input_USD,Cost_Per_1M_Output_USD\nGemini_Flash_3.8_Cluster,gemini-3.8-flash,142,410,185.4...",
+      "tags": [
+        "Benchmarks",
+        "FinOps",
+        "GPU Inference",
+        "Latency"
+      ]
+    }
+  ],
+  "chunks": [
+    {
+      "chunk_id": "doc_arch_rag_v4_chk_001",
+      "document_id": "doc_arch_rag_v4",
+      "filename": "Architecture_Spec_v4.2_Distributed_RAG.pdf",
+      "chunk_index": 0,
+      "page_number": 1,
+      "section_title": "Executive Architecture Overview",
+      "text": "The Distributed Multi-Agent Document Intelligence System (v4.2) implements a two-stage hybrid retrieval-augmented generation (RAG) pipeline designed for enterprise document workspaces. Incoming documents across PDF, DOCX, PPTX, TXT, and CSV formats undergo structure-aware parsing, sliding-window semantic chunking (750 characters with 120-character overlap), and dense embedding generation using Sentence Transformers (all-MiniLM-L6-v2 / 384-d) paired with sparse BM25 lexical indices stored in ChromaDB and SQLite.",
+      "token_count": 82
+    },
+    {
+      "chunk_id": "doc_arch_rag_v4_chk_002",
+      "document_id": "doc_arch_rag_v4",
+      "filename": "Architecture_Spec_v4.2_Distributed_RAG.pdf",
+      "chunk_index": 1,
+      "page_number": 2,
+      "section_title": "Reciprocal Rank Fusion (RRF) & Reranking",
+      "text": "To eliminate lexical blind spots on domain-specific acronyms and exact part numbers, the retrieval coordinator executes parallel dense vector search and sparse BM25 keyword matching. Candidate lists are merged via Reciprocal Rank Fusion: RRF_score(d) = sum(1 / (60 + rank_i(d))). The top 20 fused candidates are subsequently passed through a cross-encoder reranker with a strict p95 latency budget of 180ms end-to-end before context assembly.",
+      "token_count": 84
+    },
+    {
+      "chunk_id": "doc_arch_rag_v4_chk_003",
+      "document_id": "doc_arch_rag_v4",
+      "filename": "Architecture_Spec_v4.2_Distributed_RAG.pdf",
+      "chunk_index": 2,
+      "page_number": 3,
+      "section_title": "Multi-Agent Intent Routing & Orchestration",
+      "text": "The Query Router Agent classifies every user prompt into one of five canonical execution tracks: Document QA, Hierarchical Summarization, Concept Explanation, Cross-Document Comparison, or General Workspace Inquiry. Routing metadata includes a calibrated confidence score (0.00–1.00), target concept extraction, and pedagogical style selection (technical, executive, step_by_step, or eli5).",
+      "token_count": 62
+    },
+    {
+      "chunk_id": "doc_arch_rag_v4_chk_004",
+      "document_id": "doc_arch_rag_v4",
+      "filename": "Architecture_Spec_v4.2_Distributed_RAG.pdf",
+      "chunk_index": 3,
+      "page_number": 4,
+      "section_title": "Storage Security, Tenant Isolation & Retention",
+      "text": "Each workspace tenant operates within a dedicated ChromaDB collection namespace and isolated SQLite WAL metadata registry. All vector shards and SQLite pages are encrypted at rest via AES-256-GCM. To minimize background re-indexing I/O jitter on multi-million chunk collections, the Architecture Specification v4.2 configures a 90-day automated KMS key rotation cycle and a 30-day rolling TTL for ephemeral query routing telemetry logs.",
+      "token_count": 81
+    },
+    {
+      "chunk_id": "doc_arch_rag_v4_chk_005",
+      "document_id": "doc_arch_rag_v4",
+      "filename": "Architecture_Spec_v4.2_Distributed_RAG.pdf",
+      "chunk_index": 4,
+      "page_number": 5,
+      "section_title": "Citation Grounding & Hallucination Guardrails",
+      "text": "Synthesis agents are strictly constrained by a zero-fabrication system prompt contract. Every factual claim must map to an explicit retrieved chunk_id and page_number. If the retrieved contexts exhibit a maximum cosine similarity below 0.28, the synthesis agent abstains from speculation and reports insufficient document coverage.",
+      "token_count": 59
+    },
+    {
+      "chunk_id": "doc_sec_audit_q3_chk_001",
+      "document_id": "doc_sec_audit_q3",
+      "filename": "Q3_2026_Enterprise_Security_Compliance_Audit.docx",
+      "chunk_index": 0,
+      "page_number": 1,
+      "section_title": "SOC2 Type II & ISO 27001 Audit Scope",
+      "text": "This Q3 2026 Enterprise Security & Compliance Audit evaluates the AI Knowledge Workspace across Trust Services Criteria (Security, Availability, Processing Integrity, and Confidentiality). All production endpoints (/index, /documents, /ask, /summarize, /explain, /compare) passed automated continuous control verification with zero critical vulnerabilities identified during external penetration testing.",
+      "token_count": 61
+    },
+    {
+      "chunk_id": "doc_sec_audit_q3_chk_002",
+      "document_id": "doc_sec_audit_q3",
+      "filename": "Q3_2026_Enterprise_Security_Compliance_Audit.docx",
+      "chunk_index": 1,
+      "page_number": 2,
+      "section_title": "Zero-Trust Tenant Isolation & Access Control",
+      "text": "Tenant isolation is enforced at both the API gateway Bearer token verification layer and the underlying ChromaDB + SQLite persistence layer. Cross-tenant document ID enumeration is prevented via cryptographic UUIDv4/scoped document identifiers and strict row-level workspace ownership checks on every GET and DELETE operation.",
+      "token_count": 58
+    },
+    {
+      "chunk_id": "doc_sec_audit_q3_chk_003",
+      "document_id": "doc_sec_audit_q3",
+      "filename": "Q3_2026_Enterprise_Security_Compliance_Audit.docx",
+      "chunk_index": 2,
+      "page_number": 3,
+      "section_title": "Cryptographic Key Rotation & Audit Retention Mandate",
+      "text": "Under Enterprise Security Policy SEC-2026-09 (Tier-1 Regulated Workspaces), all Customer-Managed Keys (CMK) in AWS KMS / GCP Cloud KMS must execute a mandatory 30-day cryptographic key rotation interval. Furthermore, SOC2 Type II Control CC7.2 mandates a 365-day immutable retention window for all document ingestion, deletion, and AI query routing audit logs—superseding legacy 30-day ephemeral log retention defaults.",
+      "token_count": 75
+    },
+    {
+      "chunk_id": "doc_sec_audit_q3_chk_004",
+      "document_id": "doc_sec_audit_q3",
+      "filename": "Q3_2026_Enterprise_Security_Compliance_Audit.docx",
+      "chunk_index": 3,
+      "page_number": 4,
+      "section_title": "PII Redaction & Incident Response SLAs",
+      "text": "Before text chunks are committed to the vector database, the ingestion pipeline runs deterministic regex and NER scrubbing for SSNs, credit card PANs, and API secrets. In the event of an anomalous bulk retrieval alert, automated circuit breakers isolate the session within 15 seconds and trigger a 72-hour GDPR/enterprise subprocessor notification workflow.",
+      "token_count": 69
+    },
+    {
+      "chunk_id": "doc_infra_cost_2026_chk_001",
+      "document_id": "doc_infra_cost_2026",
+      "filename": "Cloud_Infrastructure_Cost_Benchmark_2026.csv",
+      "chunk_index": 0,
+      "page_number": 1,
+      "section_title": "Inference Provider Throughput & Cost Matrix (Q3–Q4 2026)",
+      "text": "Provider_Cluster,Model_Tier,Median_TTFT_ms,P95_Latency_ms,Throughput_Tokens_Sec,Cost_Per_1M_Input_USD,Cost_Per_1M_Output_USD\nGemini_Flash_3.8_Cluster,gemini-3.8-flash,142,410,185.4,0.075,0.300\nGroq_LPU_Inference_Pool,llama-3.3-70b-versatile,88,295,310.0,0.590,0.790\nOpenAI_Enterprise_Tier,gpt-4o-mini,210,640,112.5,0.150,0.600",
+      "token_count": 12
+    },
+    {
+      "chunk_id": "doc_infra_cost_2026_chk_002",
+      "document_id": "doc_infra_cost_2026",
+      "filename": "Cloud_Infrastructure_Cost_Benchmark_2026.csv",
+      "chunk_index": 1,
+      "page_number": 2,
+      "section_title": "Vector Database Memory & Indexing Economics",
+      "text": "ChromaDB HNSW index memory overhead averages 1.42 GB RAM per 1,000,000 indexed chunks (384-d float32 embeddings with M=16, efConstruction=200). Enabling scalar quantization (SQ8) reduces memory footprint by 68% (to 0.45 GB per 1M chunks) while retaining 99.1% Recall@10 across multi-document enterprise Q&A benchmarks.",
+      "token_count": 57
+    },
+    {
+      "chunk_id": "doc_infra_cost_2026_chk_003",
+      "document_id": "doc_infra_cost_2026",
+      "filename": "Cloud_Infrastructure_Cost_Benchmark_2026.csv",
+      "chunk_index": 2,
+      "page_number": 3,
+      "section_title": "File Ingestion & Upload Processing Benchmarks",
+      "text": "Ingestion pipeline stress tests across PDF (up to 25 MB), DOCX, PPTX, TXT, and CSV workloads demonstrate an average parsing + embedding throughput of 42 pages per second. Enforcing the 25 MB per-file upload boundary prevents out-of-memory (OOM) spikes on worker nodes while supporting 99.4% of standard enterprise technical specifications and financial filings.",
+      "token_count": 70
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_001",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 0,
+      "page_number": 1,
+      "section_title": "Section 6 - SOA Hackathon - 23 Team Problems",
+      "text": "Section 6: Hackathon problems\nSOA Programming and Microservices / 24SDCS03 / 23 teams\nOne problem per team. Common requirements and CO guidance follow.\nEvery challenge includes functional requirements, architecture, tests and demo.\nTeam 1: Parcel misroute interception.\nTeam 2: Container seal discrepancy.\nTeam 3: Vehicle axle load planner.\nTeam 4: Driver duty break compliance.\nTeam 5: Multileg missed connection recovery.\nTeam 6: Reverse logistics reusable crates.\nTeam 7: Delivery address change cutoff.\nTeam 8: Hazardous cargo co-loading.\nTeam 9: Rail wagon sequence restriction.\nTeam 10: Courier proof dispute.\nTeam 11: Warehouse expiry pick strategy.\nTeam 12: Dock appointment spillover.\nTeam 13: Cross-border document expiry.\nTeam 14: Cargo damage segment attribution.\nTeam 15: Delivery carbon consolidation.\nTeam 16: Warehouse bin.",
+      "token_count": 140
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_002",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 1,
+      "page_number": 1,
+      "section_title": "Section 6 - SOA Hackathon - 23 Team Problems",
+      "text": "Team 13: Cross-border document expiry.\nTeam 14: Cargo damage segment attribution.\nTeam 15: Delivery carbon consolidation.\nTeam 16: Warehouse bin replenishment trigger.\nTeam 17: Bike courier battery feasibility.\nTeam 18: Airfreight dimensional weight.\nTeam 19: Shipment split quantity conservation.\nTeam 20: Toll receipt trip reconciliation.\nTeam 21: Port demurrage clock.\nTeam 22: Dispatch scan offline reconciliation.\nTeam 23: Temperature logger calibration provenance.\nChallenge cards begin on page 5. All common B1-B6 requirements apply.\nEarlier project titles were unavailable; differences from that list were not verified.",
+      "token_count": 99
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_003",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 2,
+      "page_number": 2,
+      "section_title": "Common requirements: architecture and security",
+      "text": "**B1 / CO1 architecture:**\nImplement Auth plus the three named domain services as separate Spring Boot applications. Define bounded responsibilities, REST contracts and event ownership. Use the named Kafka topic and event for a meaningful cross-service state transition.\nDocument choreography or orchestration choice. Include eventId, aggregateId, schemaVersion, occurredAt and correlationId.\n**B2 / CO1 event reliability:**\nUse per-aggregate event keys. Persist consumed event IDs to prevent duplicate business effects. Demonstrate consumer restart and replay. Validate payloads and route invalid events to a dead-letter topic.\nShow one event delivered twice with one business effect. An outbox is a useful Advanced extension.\n**B3 / CO2 security:**",
+      "token_count": 136
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_004",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 3,
+      "page_number": 2,
+      "section_title": "Common requirements: architecture and security",
+      "text": "An outbox is a useful Advanced extension.\n**B3 / CO2 security:**\nUse Spring Security and signed JWTs. Validate signature and expiry in domain services as well as Gateway. Implement the two named roles and record-level access checks. Configure explicit CORS origins, TLS for the demo and redacted audit logs.\nUse synthetic data and mock money, devices and external actions. Explain OAuth2 issuer integration; an identity provider may be local.",
+      "token_count": 103
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_005",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 4,
+      "page_number": 3,
+      "section_title": "Common requirements: infrastructure, tests and delivery",
+      "text": "**B4 / CO3 infrastructure:**\nRegister every service with Eureka. Route clients through Spring Cloud Gateway using discovery names. Give each domain service its own JPA-owned database or isolated schema with separate credentials. Do not query another service's tables.\nRun two instances of one domain service and show Gateway load balancing and recovery when one instance stops.\n**B5 / CO4 tests:**\nSupply JUnit 5 + AssertJ tests for normal, boundary and rejected domain decisions. Use SpringBootTest for an authenticated integration flow and Kafka consumption, DataJpaTest for constraints, and producer/consumer REST and event contract tests.\nRun a small repeatable load check and report latency, error rate and chosen workload. Contract tests must f",
+      "token_count": 147
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_006",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 5,
+      "page_number": 4,
+      "section_title": "Common requirements: infrastructure, tests and delivery",
+      "text": "Run a small repeatable load check and report latency, error rate and chosen workload. Contract tests must fail on a deliberately incompatible field change.\n**B6 / delivery evidence:**\nProvide startup instructions, seed data, service diagram, API collection, event schema and automated test report. Run checks in GitHub Actions. Show the normal path, the row-specific edge case, a denied request and event-driven persistence.\nRecord brief user stories, a task board, test review and retrospective. No paid external integration is needed.",
+      "token_count": 107
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_007",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 6,
+      "page_number": 4,
+      "section_title": "Course alignment and assignment guidance",
+      "text": "**Course:**\n24SDCS03 - SOA Programming and Microservices. 2026-2027 Odd Semester.\nHandout pp. 1-2.\n**Use:**\nFilter Challenges by Section and assign its Team no. Each row is one complete scenario. Read B1-B6 with every row. IDs remain fixed.\n317 teams across 15 sections.\n**Originality scope:**\nThese are newly authored scenario-based challenges. Exact text, titles, events and problem IDs were checked for uniqueness within this set. The missing prior title list was not compared.\nShared technology requirements intentionally recur; business scenarios and acceptance cases differ.\n**CO mapping:**\nEvery challenge assesses CO1, CO2, CO3 and CO4. The row's mapping identifies the corresponding implementation evidence.\nThe handout p. 20 gives the Hacka",
+      "token_count": 143
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_008",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 7,
+      "page_number": 5,
+      "section_title": "Course alignment and assignment guidance",
+      "text": "The row's mapping identifies the corresponding implementation evidence.\nThe handout p. 20 gives the Hackathon-Final Review 25 maximum marks per CO, 100 total; detailed marking criteria remain with the instructor.\n**Core difficulty:**\nA bounded workflow with a small number of explicit rules and clear rejection cases. All B1-B6 still apply.\nDifficulty describes business logic complexity, not reduced CO coverage.\n**Intermediate difficulty:**\nMultiple linked rules, time windows, versioning, reconciliation or controlled handovers.\nUse fixed clocks and deterministic seed data to make demonstrations repeatable.\n**Advanced difficulty:**\nConcurrency, graph dependencies, atomic multi-step changes, replay, cumulative intervals or distri",
+      "token_count": 131
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_009",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 8,
+      "page_number": 6,
+      "section_title": "Course alignment and assignment guidance",
+      "text": "Concurrency, graph dependencies, atomic multi-step changes, replay, cumulative intervals or distributed failure recovery.\nKeep the prototype scope bounded. Physical control, clinical decisions and real payments are simulated.\n**Source and interpretation:**\nSOA_Handout(4).pdf, 22 pages, course 24SDCS03. Syllabus p. 1; CO definitions p. 2; teaching topics pp. 3-4; skilling topics pp. 8-9; assessment p. 20. User request supplies section counts.\nB1-B6 translate the handout topics into common hackathon acceptance requirements; the scenarios and difficulty labels are authored for this assignment.",
+      "token_count": 106
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_010",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 9,
+      "page_number": 6,
+      "section_title": "Parcel misroute interception",
+      "text": "Sec6 / Team 1 / SOA-S06-T01 / Intermediate\n# Parcel misroute interception\n**Scenario / problem statement:**\nA parcel scanned at the wrong sorting hub needs rerouting before the next outbound load closes.\n**Minimum functional requirements:**\n1. Compare scans with planned hubs.\n2. Identify viable transfers.\n3. Issue intercept commands.\n4. Record correction.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: ParcelRoute, HubScan, Intercept. Kafka topic: soa.s06.t01.events. Publish ParcelMisrouted from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: sorter, routeController. Specify producer/consumer ownership and secure record access. Show Eureka registration",
+      "token_count": 133
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_011",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 10,
+      "page_number": 7,
+      "section_title": "Parcel misroute interception",
+      "text": "JWT roles: sorter, routeController. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Scan at an unexpected hub and prevent loading onto the original wrong outbound trip. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify ParcelMisrouted fields and one REST response against consumer expectations.\n**Expected demo",
+      "token_count": 132
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_012",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 11,
+      "page_number": 7,
+      "section_title": "Parcel misroute interception",
+      "text": "Contract: verify ParcelMisrouted fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: scan at an unexpected hub and prevent loading onto the original wrong outbound trip. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 91
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_013",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 12,
+      "page_number": 8,
+      "section_title": "Container seal discrepancy",
+      "text": "Sec6 / Team 2 / SOA-S06-T02 / Core\n# Container seal discrepancy\n**Scenario / problem statement:**\nA freight receiver finds a seal number different from the dispatch manifest.\n**Minimum functional requirements:**\n1. Record expected seals.\n2. Capture arrival seals.\n3. Hold unloading clearance.\n4. Obtain discrepancy resolution.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: FreightManifest, SealInspection, UnloadingClearance. Kafka topic: soa.s06.t02.events. Publish SealMismatchDetected from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: dispatcher, receiver. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway",
+      "token_count": 128
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_014",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 13,
+      "page_number": 9,
+      "section_title": "Container seal discrepancy",
+      "text": "Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Mismatch one seal and keep its container blocked while other containers unload. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify SealMismatchDetected fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed",
+      "token_count": 129
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_015",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 14,
+      "page_number": 9,
+      "section_title": "Container seal discrepancy",
+      "text": "Contract: verify SealMismatchDetected fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: mismatch one seal and keep its container blocked while other containers unload. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 87
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_016",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 15,
+      "page_number": 10,
+      "section_title": "Vehicle axle load planner",
+      "text": "Sec6 / Team 3 / SOA-S06-T03 / Advanced\n# Vehicle axle load planner\n**Scenario / problem statement:**\nA truck can be within total payload yet exceed an axle's allowed load.\n**Minimum functional requirements:**\n1. Model axle capacities.\n2. Capture cargo mass and positions.\n3. Calculate axle loads.\n4. Reject unsafe plans.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: VehicleGeometry, CargoPlacement, AxleAssessment. Kafka topic: soa.s06.t03.events. Publish LoadPlanAssessed from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: loader, fleetPlanner. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and s",
+      "token_count": 137
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_017",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 16,
+      "page_number": 11,
+      "section_title": "Vehicle axle load planner",
+      "text": "Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Use an under-total-limit load with excessive rear-axle weight and reject it. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify LoadPlanAssessed fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative record",
+      "token_count": 128
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_018",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 17,
+      "page_number": 11,
+      "section_title": "Vehicle axle load planner",
+      "text": "Verify LoadPlanAssessed fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: use an under-total-limit load with excessive rear-axle weight and reject it. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 83
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_019",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 18,
+      "page_number": 12,
+      "section_title": "Driver duty break compliance",
+      "text": "Sec6 / Team 4 / SOA-S06-T04 / Intermediate\n# Driver duty break compliance\n**Scenario / problem statement:**\nA delivery plan must insert configured rest breaks based on accumulated duty periods.\n**Minimum functional requirements:**\n1. Capture duty logs.\n2. Configure break rules.\n3. Evaluate proposed trips.\n4. Flag insufficient rest.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: DutyLog, BreakRule, TripFeasibility. Kafka topic: soa.s06.t04.events. Publish DutyLimitApproached from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: driver, dispatcher. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and",
+      "token_count": 133
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_020",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 19,
+      "page_number": 12,
+      "section_title": "Driver duty break compliance",
+      "text": "Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Split a journey around a qualifying break and reset only the permitted counter. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify DutyLimitApproached fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representativ",
+      "token_count": 129
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_021",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 20,
+      "page_number": 13,
+      "section_title": "Driver duty break compliance",
+      "text": "Verify DutyLimitApproached fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: split a journey around a qualifying break and reset only the permitted counter. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 87
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_022",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 21,
+      "page_number": 14,
+      "section_title": "Multileg missed connection recovery",
+      "text": "Sec6 / Team 5 / SOA-S06-T05 / Advanced\n# Multileg missed connection recovery\n**Scenario / problem statement:**\nA shipment misses a connecting leg and needs a new path respecting its delivery deadline.\n**Minimum functional requirements:**\n1. Model transport legs.\n2. Record actual arrivals.\n3. Compute feasible onward paths.\n4. Expose unavoidable delay.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: TransportLeg, Arrival, Reconnection. Kafka topic: soa.s06.t05.events. Publish ConnectionMissed from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: shipper, networkPlanner. Specify producer/consumer ownership and secure record access. Show Eureka registration",
+      "token_count": 133
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_023",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 22,
+      "page_number": 14,
+      "section_title": "Multileg missed connection recovery",
+      "text": "JWT roles: shipper, networkPlanner. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Miss the last same-day leg and show the earliest next-day alternative. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify ConnectionMissed fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed repr",
+      "token_count": 131
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_024",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 23,
+      "page_number": 15,
+      "section_title": "Multileg missed connection recovery",
+      "text": "Contract: verify ConnectionMissed fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: miss the last same-day leg and show the earliest next-day alternative. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 86
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_025",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 24,
+      "page_number": 16,
+      "section_title": "Reverse logistics reusable crates",
+      "text": "Sec6 / Team 6 / SOA-S06-T06 / Core\n# Reverse logistics reusable crates\n**Scenario / problem statement:**\nA wholesaler loses reusable crates because delivery and return counts are tracked separately.\n**Minimum functional requirements:**\n1. Issue crate custody.\n2. Collect return scans.\n3. Reconcile customer balances.\n4. Flag overdue containers.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: CrateAsset, Custody, ReturnBalance. Kafka topic: soa.s06.t06.events. Publish CrateReturned from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: deliveryAgent, customerDepot. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gatew",
+      "token_count": 131
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_026",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 25,
+      "page_number": 16,
+      "section_title": "Reverse logistics reusable crates",
+      "text": "iveryAgent, customerDepot. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Return fewer crates than issued and retain the correct outstanding balance. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify CrateReturned fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed represent",
+      "token_count": 128
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_027",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 26,
+      "page_number": 17,
+      "section_title": "Reverse logistics reusable crates",
+      "text": "ract: verify CrateReturned fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: return fewer crates than issued and retain the correct outstanding balance. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 86
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_028",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 27,
+      "page_number": 17,
+      "section_title": "Delivery address change cutoff",
+      "text": "Sec6 / Team 7 / SOA-S06-T07 / Core\n# Delivery address change cutoff\n**Scenario / problem statement:**\nA recipient changes destination after a parcel enters final-mile dispatch.\n**Minimum functional requirements:**\n1. Version destinations.\n2. Enforce dispatch cutoffs.\n3. Evaluate reroute feasibility.\n4. Retain accepted destination history.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: Destination, DispatchState, RerouteDecision. Kafka topic: soa.s06.t07.events. Publish AddressChangeRequested from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: recipient, lastMileDispatcher. Specify producer/consumer ownership and secure record access. Show Eureka regi",
+      "token_count": 125
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_029",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 28,
+      "page_number": 18,
+      "section_title": "Delivery address change cutoff",
+      "text": "JWT roles: recipient, lastMileDispatcher. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Request a change after delivery and reject it without modifying proof of delivery. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify AddressChangeRequested fields and one REST response against consumer expectations.\n**",
+      "token_count": 129
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_030",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 29,
+      "page_number": 19,
+      "section_title": "Delivery address change cutoff",
+      "text": "Contract: verify AddressChangeRequested fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: request a change after delivery and reject it without modifying proof of delivery. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 91
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_031",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 30,
+      "page_number": 19,
+      "section_title": "Hazardous cargo co-loading",
+      "text": "Sec6 / Team 8 / SOA-S06-T08 / Intermediate\n# Hazardous cargo co-loading\n**Scenario / problem statement:**\nA freight planner must reject incompatible cargo classes sharing a vehicle compartment.\n**Minimum functional requirements:**\n1. Maintain compatibility rules.\n2. Assign compartments.\n3. Validate mixed loads.\n4. Explain conflicts.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: CargoDeclaration, Compartment, CompatibilityRule. Kafka topic: soa.s06.t08.events. Publish CargoLoadRejected from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: shipper, loadPlanner. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gatew",
+      "token_count": 125
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_032",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 31,
+      "page_number": 20,
+      "section_title": "Hazardous cargo co-loading",
+      "text": "les: shipper, loadPlanner. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Reject incompatible classes in one compartment but allow isolated compatible placement. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify CargoLoadRejected fields and one REST response against consumer expectations.\n**Expected demo:*",
+      "token_count": 127
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_033",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 32,
+      "page_number": 21,
+      "section_title": "Hazardous cargo co-loading",
+      "text": "Contract: verify CargoLoadRejected fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: reject incompatible classes in one compartment but allow isolated compatible placement. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 87
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_034",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 33,
+      "page_number": 21,
+      "section_title": "Rail wagon sequence restriction",
+      "text": "Sec6 / Team 9 / SOA-S06-T09 / Advanced\n# Rail wagon sequence restriction\n**Scenario / problem statement:**\nA training simulator marshals wagons while preserving configured adjacency and separation restrictions.\n**Minimum functional requirements:**\n1. Record wagon classes.\n2. Configure sequence rules.\n3. Validate consist order.\n4. Propose corrected positions.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: Wagon, Consist, SequenceRule. Kafka topic: soa.s06.t09.events. Publish ConsistValidated from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: yardOperator, railPlanner. Specify producer/consumer ownership and secure record access. Show Eureka registrat",
+      "token_count": 128
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_035",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 34,
+      "page_number": 22,
+      "section_title": "Rail wagon sequence restriction",
+      "text": "WT roles: yardOperator, railPlanner. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Place a restricted pair adjacent and explain the violated separation rule. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify ConsistValidated fields and one REST response against consumer expectations.\n**Expected demo:**\nSe",
+      "token_count": 129
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_036",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 35,
+      "page_number": 22,
+      "section_title": "Rail wagon sequence restriction",
+      "text": "Contract: verify ConsistValidated fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: place a restricted pair adjacent and explain the violated separation rule. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 87
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_037",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 36,
+      "page_number": 23,
+      "section_title": "Courier proof dispute",
+      "text": "Sec6 / Team 10 / SOA-S06-T10 / Core\n# Courier proof dispute\n**Scenario / problem statement:**\nA recipient disputes a delivery marked complete because proof refers to the wrong location.\n**Minimum functional requirements:**\n1. Store proof metadata.\n2. Accept disputes.\n3. Compare declared destination and proof.\n4. Route resolution.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: Delivery, Proof, DisputeReview. Kafka topic: soa.s06.t10.events. Publish DeliveryProofDisputed from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: recipient, courierSupervisor. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routin",
+      "token_count": 132
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_038",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 37,
+      "page_number": 24,
+      "section_title": "Courier proof dispute",
+      "text": "ourierSupervisor. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Submit proof outside the allowed location tolerance and open a review. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify DeliveryProofDisputed fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative",
+      "token_count": 127
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_039",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 38,
+      "page_number": 24,
+      "section_title": "Courier proof dispute",
+      "text": "eliveryProofDisputed fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: submit proof outside the allowed location tolerance and open a review. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 83
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_040",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 39,
+      "page_number": 25,
+      "section_title": "Warehouse expiry pick strategy",
+      "text": "Sec6 / Team 11 / SOA-S06-T11 / Intermediate\n# Warehouse expiry pick strategy\n**Scenario / problem statement:**\nA warehouse must pick the earliest-expiring eligible stock while respecting customer shelf-life requirements.\n**Minimum functional requirements:**\n1. Track lot expiries.\n2. Capture minimum remaining life.\n3. Rank eligible picks.\n4. Explain rejected older lots.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: StockLot, CustomerRequirement, PickPlan. Kafka topic: soa.s06.t11.events. Publish PickPlanCreated from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: picker, warehouseManager. Specify producer/consumer ownership and secure record access. S",
+      "token_count": 129
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_041",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 40,
+      "page_number": 26,
+      "section_title": "Warehouse expiry pick strategy",
+      "text": "JWT roles: picker, warehouseManager. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Skip the oldest lot when it fails the customer's remaining-life requirement. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify PickPlanCreated fields and one REST response against consumer expectations.",
+      "token_count": 129
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_042",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 41,
+      "page_number": 26,
+      "section_title": "Warehouse expiry pick strategy",
+      "text": "Contract: verify PickPlanCreated fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: skip the oldest lot when it fails the customer's remaining-life requirement. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 90
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_043",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 42,
+      "page_number": 27,
+      "section_title": "Dock appointment spillover",
+      "text": "Sec6 / Team 12 / SOA-S06-T12 / Intermediate\n# Dock appointment spillover\n**Scenario / problem statement:**\nLate trucks consume dock slots and affect subsequent appointments with different unloading durations.\n**Minimum functional requirements:**\n1. Track actual service times.\n2. Project slot spillover.\n3. Reassign feasible docks.\n4. Notify affected carriers.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: DockSlot, TruckArrival, ServiceProjection. Kafka topic: soa.s06.t12.events. Publish DockServiceOverran from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: carrier, dockCoordinator. Specify producer/consumer ownership and secure record access. Show Eu",
+      "token_count": 128
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_044",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 43,
+      "page_number": 27,
+      "section_title": "Dock appointment spillover",
+      "text": "JWT roles: carrier, dockCoordinator. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Overrun one dock and move only appointments compatible with another dock. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify DockServiceOverran fields and one REST response against consumer expectations.\n**Expe",
+      "token_count": 129
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_045",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 44,
+      "page_number": 28,
+      "section_title": "Dock appointment spillover",
+      "text": "Contract: verify DockServiceOverran fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: overrun one dock and move only appointments compatible with another dock. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 88
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_046",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 45,
+      "page_number": 29,
+      "section_title": "Cross-border document expiry",
+      "text": "Sec6 / Team 13 / SOA-S06-T13 / Core\n# Cross-border document expiry\n**Scenario / problem statement:**\nA simulated export shipment needs documents valid at the planned border crossing time.\n**Minimum functional requirements:**\n1. Register required document types.\n2. Store validity windows.\n3. Evaluate crossing dates.\n4. Block incomplete clearance.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: ExportShipment, Document, BorderReadiness. Kafka topic: soa.s06.t13.events. Publish DocumentValidityChanged from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: exportClerk, customsCoordinator. Specify producer/consumer ownership and secure record access. Show Eur",
+      "token_count": 128
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_047",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 46,
+      "page_number": 29,
+      "section_title": "Cross-border document expiry",
+      "text": "JWT roles: exportClerk, customsCoordinator. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Delay the crossing past document expiry and remove clearance readiness. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify DocumentValidityChanged fields and one REST response against consumer expectations.\n**Ex",
+      "token_count": 127
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_048",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 47,
+      "page_number": 30,
+      "section_title": "Cross-border document expiry",
+      "text": "Contract: verify DocumentValidityChanged fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: delay the crossing past document expiry and remove clearance readiness. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 87
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_049",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 48,
+      "page_number": 31,
+      "section_title": "Cargo damage segment attribution",
+      "text": "Sec6 / Team 14 / SOA-S06-T14 / Intermediate\n# Cargo damage segment attribution\n**Scenario / problem statement:**\nA shipment's damage evidence must identify the custody segment between two condition checks.\n**Minimum functional requirements:**\n1. Capture custody transitions.\n2. Attach condition observations.\n3. Determine suspect intervals.\n4. Retain disputed evidence.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: CargoCustody, ConditionCheck, Incident. Kafka topic: soa.s06.t14.events. Publish CargoDamageObserved from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: carrier, surveyor. Specify producer/consumer ownership and secure record access. Show Eu",
+      "token_count": 128
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_050",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 49,
+      "page_number": 31,
+      "section_title": "Cargo damage segment attribution",
+      "text": "JWT roles: carrier, surveyor. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Show intact origin evidence and damaged hub evidence to isolate the intervening segment. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify CargoDamageObserved fields and one REST response against consumer expe",
+      "token_count": 133
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_051",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 50,
+      "page_number": 32,
+      "section_title": "Cargo damage segment attribution",
+      "text": "Contract: verify CargoDamageObserved fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: show intact origin evidence and damaged hub evidence to isolate the intervening segment. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 92
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_052",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 51,
+      "page_number": 32,
+      "section_title": "Delivery carbon consolidation",
+      "text": "Sec6 / Team 15 / SOA-S06-T15 / Intermediate\n# Delivery carbon consolidation\n**Scenario / problem statement:**\nA carrier compares consolidated trips against separate deliveries using organizer-supplied emission factors.\n**Minimum functional requirements:**\n1. Capture delivery weights and distances.\n2. Apply declared factors.\n3. Compare options.\n4. Preserve calculation inputs.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: DeliveryDemand, TripOption, EmissionEstimate. Kafka topic: soa.s06.t15.events. Publish ConsolidationEvaluated from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: shipper, sustainabilityPlanner. Specify producer/consumer ownership and",
+      "token_count": 120
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_053",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 52,
+      "page_number": 33,
+      "section_title": "Delivery carbon consolidation",
+      "text": "JWT roles: shipper, sustainabilityPlanner. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Change the load assumption and recompute both options without mixing units. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify ConsolidationEvaluated fields and one REST response a",
+      "token_count": 132
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_054",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 53,
+      "page_number": 34,
+      "section_title": "Delivery carbon consolidation",
+      "text": "DataJpaTest: verify persistence constraints. Contract: verify ConsolidationEvaluated fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: change the load assumption and recompute both options without mixing units. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 92
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_055",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 54,
+      "page_number": 34,
+      "section_title": "Warehouse bin replenishment trigger",
+      "text": "Sec6 / Team 16 / SOA-S06-T16 / Core\n# Warehouse bin replenishment trigger\n**Scenario / problem statement:**\nA fast-pick bin needs refill from reserve stock without repeatedly ordering the same refill.\n**Minimum functional requirements:**\n1. Track bin levels.\n2. Apply reorder points.\n3. Create one open refill.\n4. Close after confirmed movement.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: PickBin, ReserveStock, Replenishment. Kafka topic: soa.s06.t16.events. Publish PickBinBelowThreshold from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: picker, replenishmentOperator. Specify producer/consumer ownership and secure record access. Show Eureka registr",
+      "token_count": 133
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_056",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 55,
+      "page_number": 35,
+      "section_title": "Warehouse bin replenishment trigger",
+      "text": "roles: picker, replenishmentOperator. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Send repeated low-stock readings and create one outstanding refill instruction. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify PickBinBelowThreshold fields and one REST response against consumer expectations.\n**Expecte",
+      "token_count": 124
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_057",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 56,
+      "page_number": 36,
+      "section_title": "Warehouse bin replenishment trigger",
+      "text": "Contract: verify PickBinBelowThreshold fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: send repeated low-stock readings and create one outstanding refill instruction. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 86
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_058",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 57,
+      "page_number": 36,
+      "section_title": "Bike courier battery feasibility",
+      "text": "Sec6 / Team 17 / SOA-S06-T17 / Advanced\n# Bike courier battery feasibility\n**Scenario / problem statement:**\nA cycle courier route must respect battery range and cargo weight with optional charging stops.\n**Minimum functional requirements:**\n1. Capture battery state.\n2. Estimate weighted route energy.\n3. Insert charging stops.\n4. Reject unreachable segments.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: CourierBattery, RouteEnergy, ChargeStop. Kafka topic: soa.s06.t17.events. Publish BatteryEstimateChanged from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: courier, dispatcher. Specify producer/consumer ownership and secure record access. Show Eurek",
+      "token_count": 132
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_059",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 58,
+      "page_number": 37,
+      "section_title": "Bike courier battery feasibility",
+      "text": "JWT roles: courier, dispatcher. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Reduce battery state and invalidate a route with no reachable charging stop. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify BatteryEstimateChanged fields and one REST response against consumer expectations.\n**",
+      "token_count": 131
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_060",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 59,
+      "page_number": 37,
+      "section_title": "Bike courier battery feasibility",
+      "text": "Contract: verify BatteryEstimateChanged fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: reduce battery state and invalidate a route with no reachable charging stop. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 90
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_061",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 60,
+      "page_number": 38,
+      "section_title": "Airfreight dimensional weight",
+      "text": "Sec6 / Team 18 / SOA-S06-T18 / Core\n# Airfreight dimensional weight\n**Scenario / problem statement:**\nAn airfreight quote uses the greater of actual and volumetric weight per package rule.\n**Minimum functional requirements:**\n1. Capture package dimensions.\n2. Apply divisor versions.\n3. Calculate chargeable weight.\n4. Explain quote breakdown.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: Package, RatingRule, FreightQuote. Kafka topic: soa.s06.t18.events. Publish PackageRated from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: shipper, ratingAgent. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing",
+      "token_count": 132
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_062",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 61,
+      "page_number": 39,
+      "section_title": "Airfreight dimensional weight",
+      "text": "r, ratingAgent. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Rate a light bulky parcel using volumetric weight and preserve rule version. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify PackageRated fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative recor",
+      "token_count": 131
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_063",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 62,
+      "page_number": 39,
+      "section_title": "Airfreight dimensional weight",
+      "text": "fy PackageRated fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: rate a light bulky parcel using volumetric weight and preserve rule version. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 86
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_064",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 63,
+      "page_number": 40,
+      "section_title": "Shipment split quantity conservation",
+      "text": "Sec6 / Team 19 / SOA-S06-T19 / Advanced\n# Shipment split quantity conservation\n**Scenario / problem statement:**\nA bulk shipment is divided at an intermediate hub and each child needs traceable quantity ownership.\n**Minimum functional requirements:**\n1. Record parent quantities.\n2. Create child consignments.\n3. Enforce conservation.\n4. Aggregate delivery progress.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: Consignment, SplitOperation, QuantityLedger. Kafka topic: soa.s06.t19.events. Publish ConsignmentSplit from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: hubOperator, shipper. Specify producer/consumer ownership and secure record access. Show",
+      "token_count": 129
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_065",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 64,
+      "page_number": 41,
+      "section_title": "Shipment split quantity conservation",
+      "text": "JWT roles: hubOperator, shipper. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Attempt child quantities above the parent's available quantity and reject the split. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify ConsignmentSplit fields and one REST response against consumer expectati",
+      "token_count": 131
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_066",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 65,
+      "page_number": 41,
+      "section_title": "Shipment split quantity conservation",
+      "text": "Contract: verify ConsignmentSplit fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: attempt child quantities above the parent's available quantity and reject the split. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 91
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_067",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 66,
+      "page_number": 42,
+      "section_title": "Toll receipt trip reconciliation",
+      "text": "Sec6 / Team 20 / SOA-S06-T20 / Core\n# Toll receipt trip reconciliation\n**Scenario / problem statement:**\nA fleet accountant must match toll charges to trips without charging two vehicles for one receipt.\n**Minimum functional requirements:**\n1. Import receipts.\n2. Correlate vehicle and time.\n3. Flag unmatched charges.\n4. Approve trip expense assignments.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: TollReceipt, Trip, ChargeMatch. Kafka topic: soa.s06.t20.events. Publish TollChargeMatched from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: driver, fleetAccountant. Specify producer/consumer ownership and secure record access. Show Eureka registration,",
+      "token_count": 135
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_068",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 67,
+      "page_number": 42,
+      "section_title": "Toll receipt trip reconciliation",
+      "text": "roles: driver, fleetAccountant. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Import the same receipt twice and retain a single trip charge. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify TollChargeMatched fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representati",
+      "token_count": 129
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_069",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 68,
+      "page_number": 43,
+      "section_title": "Toll receipt trip reconciliation",
+      "text": "erify TollChargeMatched fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: import the same receipt twice and retain a single trip charge. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 84
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_070",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 69,
+      "page_number": 44,
+      "section_title": "Port demurrage clock",
+      "text": "Sec6 / Team 21 / SOA-S06-T21 / Advanced\n# Port demurrage clock\n**Scenario / problem statement:**\nContainer storage charges depend on free days and approved clock-stopping holds.\n**Minimum functional requirements:**\n1. Record discharge times.\n2. Configure free periods.\n3. Apply approved pauses.\n4. Calculate auditable charge intervals.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: ContainerStay, HoldPeriod, Demurrage. Kafka topic: soa.s06.t21.events. Publish ContainerHoldApproved from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: shippingAgent, portClerk. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway",
+      "token_count": 128
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_071",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 70,
+      "page_number": 44,
+      "section_title": "Port demurrage clock",
+      "text": "ippingAgent, portClerk. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Apply overlapping hold periods and subtract their union only once. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify ContainerHoldApproved fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representativ",
+      "token_count": 127
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_072",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 71,
+      "page_number": 45,
+      "section_title": "Port demurrage clock",
+      "text": "ContainerHoldApproved fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: apply overlapping hold periods and subtract their union only once. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 82
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_073",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 72,
+      "page_number": 46,
+      "section_title": "Dispatch scan offline reconciliation",
+      "text": "Sec6 / Team 22 / SOA-S06-T22 / Advanced\n# Dispatch scan offline reconciliation\n**Scenario / problem statement:**\nDelivery agents upload scans after reconnecting and device order may differ from server arrival order.\n**Minimum functional requirements:**\n1. Capture device sequence numbers.\n2. Accept late uploads.\n3. Reconstruct shipment history.\n4. Quarantine impossible transitions.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: DeviceScan, ShipmentTimeline, ConflictReview. Kafka topic: soa.s06.t22.events. Publish OfflineScanUploaded from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: courier, operationsReviewer. Specify producer/consumer ownership and",
+      "token_count": 125
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_074",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 73,
+      "page_number": 46,
+      "section_title": "Dispatch scan offline reconciliation",
+      "text": "JWT roles: courier, operationsReviewer. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Upload delivered before an older loaded scan and reconstruct the valid sequence. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify OfflineScanUploaded fields and one REST response",
+      "token_count": 132
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_075",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 74,
+      "page_number": 47,
+      "section_title": "Dispatch scan offline reconciliation",
+      "text": "DataJpaTest: verify persistence constraints. Contract: verify OfflineScanUploaded fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: upload delivered before an older loaded scan and reconstruct the valid sequence. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 95
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_076",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 75,
+      "page_number": 47,
+      "section_title": "Temperature logger calibration provenance",
+      "text": "Sec6 / Team 23 / SOA-S06-T23 / Intermediate\n# Temperature logger calibration provenance\n**Scenario / problem statement:**\nA carrier must distinguish true cold-chain deviations from readings from an expired logger calibration.\n**Minimum functional requirements:**\n1. Register loggers.\n2. Track calibration windows.\n3. Bind devices to trips.\n4. Classify readings by calibration validity.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: Logger, Calibration, TripReading. Kafka topic: soa.s06.t23.events. Publish LoggerCalibrationExpired from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: technician, coldChainAuditor. Specify producer/consumer ownership and sec",
+      "token_count": 127
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_077",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 76,
+      "page_number": 48,
+      "section_title": "Temperature logger calibration provenance",
+      "text": "JWT roles: technician, coldChainAuditor. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Expire calibration mid-trip and flag later readings as unverified rather than normal. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify LoggerCalibrationExpired fields and one REST re",
+      "token_count": 132
+    },
+    {
+      "chunk_id": "doc_mvnrahxm_4pma_chk_078",
+      "document_id": "doc_mvnrahxm_4pma",
+      "filename": "DOC-20261022-WA0002 (2).pdf",
+      "chunk_index": 77,
+      "page_number": 49,
+      "section_title": "Temperature logger calibration provenance",
+      "text": "DataJpaTest: verify persistence constraints. Contract: verify LoggerCalibrationExpired fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: expire calibration mid-trip and flag later readings as unverified rather than normal. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions.",
+      "token_count": 95
+    }
+  ],
+  "sessions": [
+    {
+      "session_id": "sess_mvnte3m5_y1vv",
+      "title": "Explain Team 1: Parcel misroute interception in ...",
+      "created_at": "2026-10-25T12:39:11.309Z",
+      "updated_at": "2026-10-25T12:39:11.309Z",
+      "document_id": "doc_mvnrahxm_4pma",
+      "message_count": 2,
+      "messages": [
+        {
+          "id": "msg_1792931951309_u",
+          "role": "user",
+          "content": "Explain Team 1: Parcel misroute interception in simple words.",
+          "timestamp": "2026-10-25T12:39:11.309Z",
+          "document_id": "doc_mvnrahxm_4pma",
+          "model_used": "gemini-3.8-flash",
+          "role_persona": "plain_language_coach"
+        },
+        {
+          "id": "msg_1792931951310_a",
+          "role": "assistant",
+          "content": "### Team 1 (SOA-S06-T01 · Intermediate): Parcel misroute interception (Explained Simply · Page 6)\n\n> **What problem are you solving?**\n> A parcel scanned at the wrong sorting hub needs rerouting before the next outbound load closes.\n\n#### 1. What Your System Needs to Do (4 Easy Steps)\n\n1. **Step 1**: Compare scans with planned hubs.\n2. **Step 2**: Identify viable transfers.\n3. **Step 3**: Issue intercept commands.\n4. **Step 4**: Record correction.\n\n#### 2. The 4 Spring Boot Apps to Build\n\n- **`Auth` Service**: Handles login and issues signed JWT tokens for two roles: **`sorter, routeController`**.\n- **3 Domain Services (`ParcelRoute, HubScan, Intercept`)**: Each service has its **own separate database** and registers with **Eureka** behind **Spring Cloud Gateway**.\n\n#### 3. Kafka Event & Demo Checklist\n\n- **Kafka Topic & Event**: Publish **`ParcelMisrouted`** on topic **`soa.s06.t01.events.`** when the condition triggers, and make sure the receiving app saves the update only once.\n- **What to Demo to Your Instructor**: Show the normal workflow first, then trigger the special test case (*scan at an unexpected hub and prevent loading onto the original wrong outbound trip*), show the Kafka event + database change, and show 1 blocked unauthorized login request.",
+          "timestamp": "2026-10-25T12:39:11.309Z",
+          "document_id": "doc_mvnrahxm_4pma",
+          "contexts": [
+            {
+              "chunk_id": "doc_mvnrahxm_4pma_chk_010",
+              "document_id": "doc_mvnrahxm_4pma",
+              "filename": "DOC-20261022-WA0002 (2).pdf",
+              "page_number": 6,
+              "chunk_index": 9,
+              "section_title": "Parcel misroute interception",
+              "score": 0.99,
+              "excerpt": "Sec6 / Team 1 / SOA-S06-T01 / Intermediate\n# Parcel misroute interception\n**Scenario / problem statement:**\nA parcel scanned at the wrong sorting hub needs rerouting before the next outbound load closes.\n**Minimum functional requirements:**\n1. Compare scans with planned hubs.\n2. Identify viable transfers.\n3. Issue intercept commands.\n4. Record correction.\n**SOA / microservices requirements:**\nApply B1-B6 in the Guide. Domain services: ParcelRoute, HubScan, Intercept. Kafka topic: soa.s06.t01.events. Publish ParcelMisrouted from the owning domain service; a different service must consume it and persist a workflow update. JWT roles: sorter, routeController. Specify producer/consumer ownership and secure record access. Show Eureka registration"
+            },
+            {
+              "chunk_id": "doc_mvnrahxm_4pma_chk_012",
+              "document_id": "doc_mvnrahxm_4pma",
+              "filename": "DOC-20261022-WA0002 (2).pdf",
+              "page_number": 7,
+              "chunk_index": 11,
+              "section_title": "Parcel misroute interception",
+              "score": 0.99,
+              "excerpt": "Contract: verify ParcelMisrouted fields and one REST response against consumer expectations.\n**Expected demo:**\nSeed representative records. Demonstrate the normal workflow through Gateway. Then: scan at an unexpected hub and prevent loading onto the original wrong outbound trip. Show the resulting Kafka event and persisted downstream state, one denied JWT request, and passing test results.\nB1-B6 on pages 2-3 apply in full. Use synthetic data and simulated external actions."
+            },
+            {
+              "chunk_id": "doc_mvnrahxm_4pma_chk_011",
+              "document_id": "doc_mvnrahxm_4pma",
+              "filename": "DOC-20261022-WA0002 (2).pdf",
+              "page_number": 7,
+              "chunk_index": 10,
+              "section_title": "Parcel misroute interception",
+              "score": 0.99,
+              "excerpt": "JWT roles: sorter, routeController. Specify producer/consumer ownership and secure record access. Show Eureka registration, Gateway routing and separate JPA stores.\n**CO mapping:**\nCO1: service contracts + Kafka workflow; CO2: JWT roles + authorization; CO3: Eureka + Gateway + per-service JPA; CO4: JUnit + integration + contract tests.\n**Testing requirements:**\nJUnit 5 + AssertJ: assert the domain rule exercised by this case: Scan at an unexpected hub and prevent loading onto the original wrong outbound trip. SpringBootTest: verify Gateway/authenticated API workflow and consumed-event state. DataJpaTest: verify persistence constraints. Contract: verify ParcelMisrouted fields and one REST response against consumer expectations.\n**Expected demo"
+            },
+            {
+              "chunk_id": "doc_mvnrahxm_4pma_chk_001",
+              "document_id": "doc_mvnrahxm_4pma",
+              "filename": "DOC-20261022-WA0002 (2).pdf",
+              "page_number": 1,
+              "chunk_index": 0,
+              "section_title": "Section 6 - SOA Hackathon - 23 Team Problems",
+              "score": 0.99,
+              "excerpt": "Section 6: Hackathon problems\nSOA Programming and Microservices / 24SDCS03 / 23 teams\nOne problem per team. Common requirements and CO guidance follow.\nEvery challenge includes functional requirements, architecture, tests and demo.\nTeam 1: Parcel misroute interception.\nTeam 2: Container seal discrepancy.\nTeam 3: Vehicle axle load planner.\nTeam 4: Driver duty break compliance.\nTeam 5: Multileg missed connection recovery.\nTeam 6: Reverse logistics reusable crates.\nTeam 7: Delivery address change cutoff.\nTeam 8: Hazardous cargo co-loading.\nTeam 9: Rail wagon sequence restriction.\nTeam 10: Courier proof dispute.\nTeam 11: Warehouse expiry pick strategy.\nTeam 12: Dock appointment spillover.\nTeam 13: Cross-border document expiry.\nTeam 14: Cargo damage segment attribution.\nTeam 15: Delivery carbon consolidation.\nTeam 16: Warehouse bin."
+            }
+          ],
+          "intent": "explain",
+          "routing": {
+            "query": "Explain Team 1: Parcel misroute interception in simple words.",
+            "intent": "explain",
+            "confidence": 0.91,
+            "explanation_style": "eli5",
+            "target_concept": "Team 1: Parcel misroute interception",
+            "recommended_agent": "ConceptExplainerAgent",
+            "reasoning": "Conceptual decomposition query targeting \"Team 1: Parcel misroute interception\" with eli5 pedagogy."
+          },
+          "latency_ms": 5509,
+          "model_used": "gemini-3.8-flash",
+          "role_persona": "plain_language_coach",
+          "follow_up_questions": [
+            "Give me a real-world analogy for Team 1",
+            "Quiz me with 3 viva questions for Team 1",
+            "Explain the B1–B6 rules every team must follow"
+          ]
+        }
+      ]
+    },
+    {
+      "session_id": "sess_mvntcn4d_p3ks",
+      "title": "Give me a real-world analogy",
+      "created_at": "2026-10-25T12:38:03.277Z",
+      "updated_at": "2026-10-25T12:38:03.277Z",
+      "document_id": "doc_mvnrahxm_4pma",
+      "message_count": 2,
+      "messages": [
+        {
+          "id": "msg_1792931883277_u",
+          "role": "user",
+          "content": "Give me a real-world analogy",
+          "timestamp": "2026-10-25T12:38:03.277Z",
+          "document_id": "doc_mvnrahxm_4pma",
+          "model_used": "gemini-3.8-flash",
+          "role_persona": "plain_language_coach"
+        },
+        {
+          "id": "msg_1792931883278_a",
+          "role": "assistant",
+          "content": "### Explained With an Everyday Analogy (DOC-20261022-WA0002 (2).pdf, Page 2)\n\n> **Simple Version:** B1 / CO1 architecture: Implement Auth plus the three named domain services as separate Spring Boot applications.\n\n#### Think of It Like This:\n\n- **Microservices, Eureka & API Gateway**: Instead of building one giant program, each team builds 4 small, independent apps (1 Login app + 3 business apps). Eureka acts like a live phonebook so the apps can find each other, and the Gateway is the single front door.\n- **Why It Matters Here (Page 2)**: Instead of forcing you to read dense technical formulas, the main takeaway from *Common requirements: architecture and security* is that the system stays fast, safe, and accurate by splitting the work into clear, verifiable steps.",
+          "timestamp": "2026-10-25T12:38:03.277Z",
+          "document_id": "doc_mvnrahxm_4pma",
+          "contexts": [
+            {
+              "chunk_id": "doc_mvnrahxm_4pma_chk_003",
+              "document_id": "doc_mvnrahxm_4pma",
+              "filename": "DOC-20261022-WA0002 (2).pdf",
+              "page_number": 2,
+              "chunk_index": 2,
+              "section_title": "Common requirements: architecture and security",
+              "score": 0.605,
+              "excerpt": "**B1 / CO1 architecture:**\nImplement Auth plus the three named domain services as separate Spring Boot applications. Define bounded responsibilities, REST contracts and event ownership. Use the named Kafka topic and event for a meaningful cross-service state transition.\nDocument choreography or orchestration choice. Include eventId, aggregateId, schemaVersion, occurredAt and correlationId.\n**B2 / CO1 event reliability:**\nUse per-aggregate event keys. Persist consumed event IDs to prevent duplicate business effects. Demonstrate consumer restart and replay. Validate payloads and route invalid events to a dead-letter topic.\nShow one event delivered twice with one business effect. An outbox is a useful Advanced extension.\n**B3 / CO2 security:**"
+            },
+            {
+              "chunk_id": "doc_mvnrahxm_4pma_chk_004",
+              "document_id": "doc_mvnrahxm_4pma",
+              "filename": "DOC-20261022-WA0002 (2).pdf",
+              "page_number": 2,
+              "chunk_index": 3,
+              "section_title": "Common requirements: architecture and security",
+              "score": 0.605,
+              "excerpt": "An outbox is a useful Advanced extension.\n**B3 / CO2 security:**\nUse Spring Security and signed JWTs. Validate signature and expiry in domain services as well as Gateway. Implement the two named roles and record-level access checks. Configure explicit CORS origins, TLS for the demo and redacted audit logs.\nUse synthetic data and mock money, devices and external actions. Explain OAuth2 issuer integration; an identity provider may be local."
+            },
+            {
+              "chunk_id": "doc_mvnrahxm_4pma_chk_005",
+              "document_id": "doc_mvnrahxm_4pma",
+              "filename": "DOC-20261022-WA0002 (2).pdf",
+              "page_number": 3,
+              "chunk_index": 4,
+              "section_title": "Common requirements: infrastructure, tests and delivery",
+              "score": 0.605,
+              "excerpt": "**B4 / CO3 infrastructure:**\nRegister every service with Eureka. Route clients through Spring Cloud Gateway using discovery names. Give each domain service its own JPA-owned database or isolated schema with separate credentials. Do not query another service's tables.\nRun two instances of one domain service and show Gateway load balancing and recovery when one instance stops.\n**B5 / CO4 tests:**\nSupply JUnit 5 + AssertJ tests for normal, boundary and rejected domain decisions. Use SpringBootTest for an authenticated integration flow and Kafka consumption, DataJpaTest for constraints, and producer/consumer REST and event contract tests.\nRun a small repeatable load check and report latency, error rate and chosen workload. Contract tests must f"
+            },
+            {
+              "chunk_id": "doc_mvnrahxm_4pma_chk_007",
+              "document_id": "doc_mvnrahxm_4pma",
+              "filename": "DOC-20261022-WA0002 (2).pdf",
+              "page_number": 4,
+              "chunk_index": 6,
+              "section_title": "Course alignment and assignment guidance",
+              "score": 0.605,
+              "excerpt": "**Course:**\n24SDCS03 - SOA Programming and Microservices. 2026-2027 Odd Semester.\nHandout pp. 1-2.\n**Use:**\nFilter Challenges by Section and assign its Team no. Each row is one complete scenario. Read B1-B6 with every row. IDs remain fixed.\n317 teams across 15 sections.\n**Originality scope:**\nThese are newly authored scenario-based challenges. Exact text, titles, events and problem IDs were checked for uniqueness within this set. The missing prior title list was not compared.\nShared technology requirements intentionally recur; business scenarios and acceptance cases differ.\n**CO mapping:**\nEvery challenge assesses CO1, CO2, CO3 and CO4. The row's mapping identifies the corresponding implementation evidence.\nThe handout p. 20 gives the Hacka"
+            }
+          ],
+          "intent": "explain",
+          "routing": {
+            "query": "Give me a real-world analogy",
+            "intent": "explain",
+            "confidence": 0.91,
+            "explanation_style": "eli5",
+            "target_concept": "Give me a real-world analogy",
+            "recommended_agent": "ConceptExplainerAgent",
+            "reasoning": "Conceptual decomposition query targeting \"Give me a real-world analogy\" with eli5 pedagogy."
+          },
+          "latency_ms": 5517,
+          "model_used": "gemini-3.8-flash",
+          "role_persona": "plain_language_coach",
+          "follow_up_questions": [
+            "Turn this into a step-by-step action checklist",
+            "Quiz me with 3 quick questions on this document",
+            "What are the most important numbers and rules in this document?"
+          ]
+        }
+      ]
+    },
+    {
+      "session_id": "sess_arch_review_01",
+      "title": "Hybrid RAG & RRF Latency Architecture",
+      "created_at": "2026-10-23T18:10:00Z",
+      "updated_at": "2026-10-23T18:10:15Z",
+      "document_id": null,
+      "message_count": 2,
+      "messages": [
+        {
+          "id": "msg_01",
+          "role": "user",
+          "content": "How does the hybrid retrieval pipeline combine dense embeddings and BM25, and what is the p95 latency budget?",
+          "timestamp": "2026-10-23T18:10:00Z",
+          "document_id": null
+        },
+        {
+          "id": "msg_02",
+          "role": "assistant",
+          "content": "### Hybrid Dense-Sparse Retrieval Architecture\n\nBased on **Architecture_Spec_v4.2_Distributed_RAG.pdf** (Pages 1–2), the system executes a two-stage retrieval pipeline designed to eliminate lexical blind spots on domain-specific acronyms:\n\n1. **Parallel First-Stage Retrieval**:\n   - **Dense Vector Search**: 384-dimensional embeddings via Sentence Transformers (`all-MiniLM-L6-v2`) stored in ChromaDB HNSW indices.\n   - **Sparse Lexical Search**: BM25 keyword matching over 750-character sliding-window chunks (120-character overlap).\n2. **Reciprocal Rank Fusion (RRF)**:\n   Candidate lists from dense and sparse retrievers are merged deterministically using:\n   ```\n   RRF_score(d) = Σ 1 / (60 + rank_i(d))\n   ```\n3. **Cross-Encoder Reranking & Latency SLA**:\n   The top **20 fused candidates** are passed through a cross-encoder reranker governed by a strict **p95 end-to-end latency budget of 180ms** before context assembly.",
+          "timestamp": "2026-10-23T18:10:15Z",
+          "document_id": null,
+          "contexts": [
+            {
+              "chunk_id": "doc_arch_rag_v4_chk_002",
+              "document_id": "doc_arch_rag_v4",
+              "filename": "Architecture_Spec_v4.2_Distributed_RAG.pdf",
+              "page_number": 2,
+              "chunk_index": 1,
+              "section_title": "Reciprocal Rank Fusion (RRF) & Reranking",
+              "score": 0.98,
+              "excerpt": "To eliminate lexical blind spots on domain-specific acronyms and exact part numbers, the retrieval coordinator executes parallel dense vector search and sparse BM25 keyword matching. Candidate lists are merged via Reciprocal Rank Fusion: RRF_score(d) = sum(1 / (60 + rank_i(d))). The top 20 fused candidates are subsequently passed through a cross-encoder reranker with a strict p95 latency budget of 180ms end-to-end before context assembly."
+            },
+            {
+              "chunk_id": "doc_infra_cost_2026_chk_001",
+              "document_id": "doc_infra_cost_2026",
+              "filename": "Cloud_Infrastructure_Cost_Benchmark_2026.csv",
+              "page_number": 1,
+              "chunk_index": 0,
+              "section_title": "Inference Provider Throughput & Cost Matrix (Q3–Q4 2026)",
+              "score": 0.464,
+              "excerpt": "Provider_Cluster,Model_Tier,Median_TTFT_ms,P95_Latency_ms,Throughput_Tokens_Sec,Cost_Per_1M_Input_USD,Cost_Per_1M_Output_USD\nGemini_Flash_3.8_Cluster,gemini-3.8-flash,142,410,185.4,0.075,0.300\nGroq_LPU_Inference_Pool,llama-3.3-70b-versatile,88,295,310.0,0.590,0.790\nOpenAI_Enterprise_Tier,gpt-4o-mini,210,640,112.5,0.150,0.600"
+            },
+            {
+              "chunk_id": "doc_arch_rag_v4_chk_001",
+              "document_id": "doc_arch_rag_v4",
+              "filename": "Architecture_Spec_v4.2_Distributed_RAG.pdf",
+              "page_number": 1,
+              "chunk_index": 0,
+              "section_title": "Executive Architecture Overview",
+              "score": 0.38,
+              "excerpt": "The Distributed Multi-Agent Document Intelligence System (v4.2) implements a two-stage hybrid retrieval-augmented generation (RAG) pipeline designed for enterprise document workspaces. Incoming documents across PDF, DOCX, PPTX, TXT, and CSV formats undergo structure-aware parsing, sliding-window semantic chunking (750 characters with 120-character overlap), and dense embedding generation using Sentence Transformers (all-MiniLM-L6-v2 / 384-d) paired with sparse BM25 lexical indices stored in ChromaDB and SQLite."
+            }
+          ],
+          "intent": "explain",
+          "routing": {
+            "query": "How does the hybrid retrieval pipeline combine dense embeddings and BM25, and what is the p95 latency budget?",
+            "intent": "explain",
+            "confidence": 0.91,
+            "explanation_style": "technical",
+            "target_concept": "the hybrid retrieval pipeline combine dense embeddings and BM25, and what is the p95 latency budget",
+            "recommended_agent": "ConceptExplainerAgent",
+            "reasoning": "Conceptual decomposition query targeting \"the hybrid retrieval pipeline combine dense embeddings and BM25, and what is the p95 latency budget\" with technical pedagogy."
+          },
+          "latency_ms": 164
+        }
+      ]
+    }
+  ]
+}

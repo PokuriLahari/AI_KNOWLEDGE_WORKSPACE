@@ -1,0 +1,6 @@
+{
+  "name": "Knowledge Workspace — Document Intelligence",
+  "description": "Multi-agent RAG document intelligence workspace for semantic search, grounded Q&A, summarization, concept explanation, and cross-document comparison.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

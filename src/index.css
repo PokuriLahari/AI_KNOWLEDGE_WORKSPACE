@@ -1,0 +1,178 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  code, pre, .font-mono, .tabular-nums {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Official Google Sign-In Material Button Styling */
+.gsi-material-button {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-appearance: none;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #0f172a;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  height: 34px;
+  letter-spacing: 0.1px;
+  outline: none;
+  overflow: hidden;
+  padding: 0 12px;
+  position: relative;
+  text-align: center;
+  transition: background-color 0.18s, border-color 0.18s, box-shadow 0.18s;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dark .gsi-material-button {
+  background-color: #131722;
+  border-color: #1e293b;
+  color: #f8fafc;
+}
+
+.gsi-material-button:hover {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+  box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.06);
+}
+
+.dark .gsi-material-button:hover {
+  background-color: #1e2433;
+  border-color: #334155;
+}
+
+.gsi-material-button .gsi-material-button-icon {
+  height: 16px;
+  margin-right: 8px;
+  min-width: 16px;
+  width: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.gsi-material-button .gsi-material-button-content-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 100%;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+.gsi-material-button .gsi-material-button-contents {
+  flex-grow: 1;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+}
+
+.gsi-material-button .gsi-material-button-state {
+  transition: opacity 0.2s;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* Subtle custom scrollbars for high-density workspace panels */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Soft Pastel Palette Overrides (Replaces solid/neon fills with pastel versions of the same hue) */
+html:not(.dark) .bg-indigo-600,
+html:not(.dark) .bg-indigo-500 {
+  background-color: #E0E7FF !important;
+  color: #312E81 !important;
+  border: 1px solid #C7D2FE !important;
+}
+
+html:not(.dark) .bg-indigo-600:hover,
+html:not(.dark) .bg-indigo-500:hover,
+html:not(.dark) .hover\:bg-indigo-500:hover,
+html:not(.dark) .hover\:bg-indigo-700:hover {
+  background-color: #C7D2FE !important;
+  color: #1E1B4B !important;
+}
+
+html:not(.dark) .bg-emerald-600,
+html:not(.dark) .bg-emerald-500 {
+  background-color: #D1FAE5 !important;
+  color: #065F46 !important;
+  border: 1px solid #A7F3D0 !important;
+}
+
+html:not(.dark) .bg-rose-600,
+html:not(.dark) .bg-rose-500 {
+  background-color: #FFE4E6 !important;
+  color: #9F1239 !important;
+  border: 1px solid #FECDD3 !important;
+}
+
+html:not(.dark) .bg-amber-600,
+html:not(.dark) .bg-amber-500 {
+  background-color: #FEF3C7 !important;
+  color: #92400E !important;
+  border: 1px solid #FDE68A !important;
+}
+
+html:not(.dark) .bg-violet-600,
+html:not(.dark) .bg-violet-500 {
+  background-color: #EDE9FE !important;
+  color: #4C1D95 !important;
+  border: 1px solid #DDD6FE !important;
+}
+
