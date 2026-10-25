@@ -1,0 +1,88 @@
+<svg width="1000" height="380" viewBox="0 0 1000 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pipe-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#070A12"/>
+    </linearGradient>
+    <linearGradient id="grad-blue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+    .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Plus Jakarta Sans", sans-serif; }
+  </style>
+
+  <rect width="1000" height="380" rx="14" fill="url(#pipe-bg)" stroke="#1E293B" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <text x="40" y="44" fill="#38BDF8" class="mono" font-size="11" font-weight="700" letter-spacing="1">GROUNDED RETRIEVAL PIPELINE</text>
+  <text x="40" y="74" fill="#FFFFFF" class="sans" font-size="20" font-weight="800">Reciprocal Rank Fusion (RRF) &amp; Zero-Hallucination Grounding</text>
+
+  <!-- Step 1 -->
+  <g transform="translate(40, 110)">
+    <rect width="165" height="210" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+    <circle cx="28" cy="28" r="14" fill="#38BDF8" fill-opacity="0.2"/>
+    <text x="28" y="33" text-anchor="middle" fill="#38BDF8" class="mono" font-size="12" font-weight="700">01</text>
+    <text x="16" y="75" fill="#FFFFFF" class="sans" font-size="13" font-weight="700">Document Parsing</text>
+    <text x="16" y="98" fill="#94A3B8" class="sans" font-size="11">Structure-aware multi-format parser for PDF, DOCX, PPTX, CSV, TXT.</text>
+    <rect x="14" y="150" width="137" height="42" rx="6" fill="#1E293B"/>
+    <text x="22" y="176" fill="#E2E8F0" class="mono" font-size="10">Page Boundaries</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 215 215 L 235 215" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Step 2 -->
+  <g transform="translate(245, 110)">
+    <rect width="165" height="210" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+    <circle cx="28" cy="28" r="14" fill="#818CF8" fill-opacity="0.2"/>
+    <text x="28" y="33" text-anchor="middle" fill="#818CF8" class="mono" font-size="12" font-weight="700">02</text>
+    <text x="16" y="75" fill="#FFFFFF" class="sans" font-size="13" font-weight="700">Semantic Chunker</text>
+    <text x="16" y="98" fill="#94A3B8" class="sans" font-size="11">Sliding 750-char window with 120-char overlap preserving semantic coherence.</text>
+    <rect x="14" y="150" width="137" height="42" rx="6" fill="#1E293B"/>
+    <text x="22" y="176" fill="#818CF8" class="mono" font-size="10">750c / 120c overlap</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 420 215 L 440 215" stroke="#818CF8" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Step 3 -->
+  <g transform="translate(450, 110)">
+    <rect width="165" height="210" rx="10" fill="#0F172A" stroke="#38BDF8" stroke-width="1.2"/>
+    <circle cx="28" cy="28" r="14" fill="#C084FC" fill-opacity="0.2"/>
+    <text x="28" y="33" text-anchor="middle" fill="#C084FC" class="mono" font-size="12" font-weight="700">03</text>
+    <text x="16" y="75" fill="#FFFFFF" class="sans" font-size="13" font-weight="700">Hybrid Retrieval</text>
+    <text x="16" y="98" fill="#94A3B8" class="sans" font-size="11">Simultaneous 384-d dense embedding match &amp; BM25 lexical term indexing.</text>
+    <rect x="14" y="150" width="137" height="42" rx="6" fill="#1E293B"/>
+    <text x="22" y="176" fill="#38BDF8" class="mono" font-size="10">Dense + BM25 Fusion</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 625 215 L 645 215" stroke="#C084FC" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Step 4 -->
+  <g transform="translate(655, 110)">
+    <rect width="165" height="210" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+    <circle cx="28" cy="28" r="14" fill="#34D399" fill-opacity="0.2"/>
+    <text x="28" y="33" text-anchor="middle" fill="#34D399" class="mono" font-size="12" font-weight="700">04</text>
+    <text x="16" y="75" fill="#FFFFFF" class="sans" font-size="13" font-weight="700">RRF &amp; Reranking</text>
+    <text x="16" y="98" fill="#94A3B8" class="sans" font-size="11">RRF score calculation merges candidates. Top k passages passed to Gemini 3.8.</text>
+    <rect x="14" y="150" width="137" height="42" rx="6" fill="#1E293B"/>
+    <text x="22" y="176" fill="#34D399" class="mono" font-size="10">p95 &lt; 180ms Latency</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 830 215 L 850 215" stroke="#34D399" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Step 5 -->
+  <g transform="translate(860, 110)">
+    <rect width="110" height="210" rx="10" fill="#1E1B4B" stroke="#A855F7" stroke-width="1.5"/>
+    <circle cx="28" cy="28" r="14" fill="#A855F7" fill-opacity="0.3"/>
+    <text x="28" y="33" text-anchor="middle" fill="#E9D5FF" class="mono" font-size="12" font-weight="700">05</text>
+    <text x="12" y="75" fill="#FFFFFF" class="sans" font-size="12" font-weight="700">Grounded Synthesis</text>
+    <text x="12" y="115" fill="#C084FC" class="mono" font-size="10">Page &amp; Chunk Citations</text>
+  </g>
+</svg>

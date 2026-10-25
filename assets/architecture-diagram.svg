@@ -1,0 +1,232 @@
+<svg width="1100" height="680" viewBox="0 0 1100 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D1A"/>
+      <stop offset="100%" stop-color="#050811"/>
+    </linearGradient>
+    <linearGradient id="primary-box" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(30, 41, 59, 0.8)"/>
+      <stop offset="100%" stop-color="rgba(15, 23, 42, 0.9)"/>
+    </linearGradient>
+    <linearGradient id="accent-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F2FE"/>
+      <stop offset="100%" stop-color="#4FACFE"/>
+    </linearGradient>
+    <linearGradient id="accent-purple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+    <linearGradient id="accent-emerald" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+    .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Plus Jakarta Sans", sans-serif; }
+    .title { font-weight: 700; fill: #FFFFFF; font-size: 15px; }
+    .sub { font-weight: 400; fill: #94A3B8; font-size: 12px; }
+    .pill { font-weight: 600; font-size: 11px; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1100" height="680" rx="16" fill="url(#bg)" stroke="#1E293B" stroke-width="1.5"/>
+
+  <!-- Title Section -->
+  <g transform="translate(50, 45)">
+    <text x="0" y="0" fill="#38BDF8" class="mono pill" letter-spacing="1">SYSTEM ARCHITECTURE SCHEMATIC</text>
+    <text x="0" y="28" fill="#FFFFFF" class="sans" font-size="24" font-weight="800">Two-Stage Hybrid Dense-Sparse RAG &amp; Multi-Agent Intelligence</text>
+    <text x="0" y="48" fill="#64748B" class="sans" font-size="13">End-to-End Ingestion, Reciprocal Rank Fusion (RRF), Orchestration, and Generative Media Studio</text>
+  </g>
+
+  <!-- COLUMN 1: DOCUMENT INGESTION & CHUNKING -->
+  <g transform="translate(50, 130)">
+    <rect width="210" height="500" rx="12" fill="url(#primary-box)" stroke="#334155" stroke-width="1.2"/>
+    <rect x="0" y="0" width="210" height="42" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <text x="16" y="26" class="sans title">1. Multi-Format Ingest</text>
+
+    <!-- File Formats Pill -->
+    <g transform="translate(16, 60)">
+      <rect width="178" height="70" rx="8" fill="#0B132B" stroke="#1E293B" stroke-width="1"/>
+      <text x="12" y="26" fill="#38BDF8" class="mono pill">DOCUMENTS DETECTED</text>
+      <text x="12" y="48" fill="#CBD5E1" class="sans" font-size="12" font-weight="600">PDF • DOCX • PPTX • CSV • TXT</text>
+    </g>
+
+    <!-- Structure Parser -->
+    <g transform="translate(16, 145)">
+      <rect width="178" height="85" rx="8" fill="#0B132B" stroke="#1E293B" stroke-width="1"/>
+      <text x="12" y="24" fill="#E2E8F0" class="sans" font-size="13" font-weight="600">Structure-Aware Parser</text>
+      <text x="12" y="44" class="sans sub">Page-boundary isolation</text>
+      <text x="12" y="62" class="sans sub">Header &amp; table normalization</text>
+    </g>
+
+    <!-- Semantic Chunker -->
+    <g transform="translate(16, 245)">
+      <rect width="178" height="110" rx="8" fill="#0B132B" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="3 3"/>
+      <text x="12" y="24" fill="#38BDF8" class="mono pill">SLIDING CHUNKING</text>
+      <text x="12" y="46" fill="#FFFFFF" class="sans" font-size="13" font-weight="700">750-Char Window</text>
+      <text x="12" y="66" class="sans sub">120-char context overlap</text>
+      <text x="12" y="86" class="sans sub">Deterministic chunk UUIDs</text>
+    </g>
+
+    <!-- Google Drive Sync Pill -->
+    <g transform="translate(16, 370)">
+      <rect width="178" height="75" rx="8" fill="#0B132B" stroke="#1E293B" stroke-width="1"/>
+      <text x="12" y="24" fill="#10B981" class="mono pill">WORKSPACE SYNC</text>
+      <text x="12" y="46" fill="#E2E8F0" class="sans" font-size="12" font-weight="600">Google Drive API</text>
+      <text x="12" y="64" class="sans sub">OAuth 2.0 Cloud Bridge</text>
+    </g>
+  </g>
+
+  <!-- COLUMN 2: HYBRID DUAL-ENGINE RETRIEVAL -->
+  <g transform="translate(290, 130)">
+    <rect width="240" height="500" rx="12" fill="url(#primary-box)" stroke="#38BDF8" stroke-width="1.2"/>
+    <rect x="0" y="0" width="240" height="42" rx="12" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+    <text x="16" y="26" class="sans title">2. Hybrid Retrieval Engine</text>
+
+    <!-- Engine A: Dense -->
+    <g transform="translate(16, 60)">
+      <rect width="208" height="95" rx="8" fill="#0B132B" stroke="#38BDF8" stroke-width="1"/>
+      <text x="12" y="24" fill="#38BDF8" class="mono pill">TRACK A: DENSE EMBEDDINGS</text>
+      <text x="12" y="46" fill="#FFFFFF" class="sans" font-size="13" font-weight="700">384-d Dense Vectors</text>
+      <text x="12" y="66" class="sans sub">all-MiniLM-L6-v2 cosine similarity</text>
+      <text x="12" y="84" class="sans sub">Captures conceptual semantics</text>
+    </g>
+
+    <!-- Engine B: Sparse BM25 -->
+    <g transform="translate(16, 170)">
+      <rect width="208" height="95" rx="8" fill="#0B132B" stroke="#818CF8" stroke-width="1"/>
+      <text x="12" y="24" fill="#818CF8" class="mono pill">TRACK B: SPARSE LEXICAL</text>
+      <text x="12" y="46" fill="#FFFFFF" class="sans" font-size="13" font-weight="700">BM25 Keyword Scoring</text>
+      <text x="12" y="66" class="sans sub">Exact keyword match &amp; acronyms</text>
+      <text x="12" y="84" class="sans sub">Eliminates lexical blind spots</text>
+    </g>
+
+    <!-- Fusion Layer: RRF -->
+    <g transform="translate(16, 280)">
+      <rect width="208" height="105" rx="8" fill="#1E1B4B" stroke="#C084FC" stroke-width="1.4"/>
+      <text x="12" y="24" fill="#C084FC" class="mono pill">RECIPROCAL RANK FUSION</text>
+      <text x="12" y="48" fill="#FFFFFF" class="mono" font-size="11" font-weight="700">RRF = ∑ 1 / (60 + rank_i)</text>
+      <text x="12" y="70" class="sans sub">Blends dense + sparse rankings</text>
+      <text x="12" y="90" class="sans sub">Strict p95 &lt; 180ms latency</text>
+    </g>
+
+    <!-- Persisted Vector & State Store -->
+    <g transform="translate(16, 400)">
+      <rect width="208" height="70" rx="8" fill="#0B132B" stroke="#1E293B" stroke-width="1"/>
+      <text x="12" y="24" fill="#10B981" class="mono pill">PERSISTED DATA STORE</text>
+      <text x="12" y="46" fill="#E2E8F0" class="sans" font-size="12" font-weight="600">.data/workspace-store.json</text>
+      <text x="12" y="62" class="sans sub">Zero external DB dependency</text>
+    </g>
+  </g>
+
+  <!-- COLUMN 3: MULTI-AGENT ORCHESTRATION & ROUTING -->
+  <g transform="translate(560, 130)">
+    <rect width="240" height="500" rx="12" fill="url(#primary-box)" stroke="#A855F7" stroke-width="1.2"/>
+    <rect x="0" y="0" width="240" height="42" rx="12" fill="#1E293B" stroke="#A855F7" stroke-width="1"/>
+    <text x="16" y="26" class="sans title">3. Autonomous Agent Router</text>
+
+    <!-- Agent 1: QA -->
+    <g transform="translate(16, 60)">
+      <rect width="208" height="65" rx="8" fill="#0B132B" stroke="#1E293B" stroke-width="1"/>
+      <text x="12" y="22" fill="#38BDF8" class="mono pill">AGENT 1: DOCUMENT QA</text>
+      <text x="12" y="42" fill="#FFFFFF" class="sans" font-size="12" font-weight="600">Grounded Multi-Turn Chat</text>
+      <text x="12" y="56" class="sans sub">Chunk-level citation verification</text>
+    </g>
+
+    <!-- Agent 2: Summarizer -->
+    <g transform="translate(16, 135)">
+      <rect width="208" height="65" rx="8" fill="#0B132B" stroke="#1E293B" stroke-width="1"/>
+      <text x="12" y="22" fill="#818CF8" class="mono pill">AGENT 2: SUMMARIZER</text>
+      <text x="12" y="42" fill="#FFFFFF" class="sans" font-size="12" font-weight="600">Executive &amp; Technical Briefs</text>
+      <text x="12" y="56" class="sans sub">4 distinct hierarchical formats</text>
+    </g>
+
+    <!-- Agent 3: Concept Explainer -->
+    <g transform="translate(16, 210)">
+      <rect width="208" height="65" rx="8" fill="#0B132B" stroke="#1E293B" stroke-width="1"/>
+      <text x="12" y="22" fill="#C084FC" class="mono pill">AGENT 3: CONCEPT EXPLAINER</text>
+      <text x="12" y="42" fill="#FFFFFF" class="sans" font-size="12" font-weight="600">Pedagogical Deconstruction</text>
+      <text x="12" y="56" class="sans sub">ELI5, Step-by-Step, Tech Deep-Dive</text>
+    </g>
+
+    <!-- Agent 4: Cross-Doc Compare -->
+    <g transform="translate(16, 285)">
+      <rect width="208" height="65" rx="8" fill="#0B132B" stroke="#1E293B" stroke-width="1"/>
+      <text x="12" y="22" fill="#F43F5E" class="mono pill">AGENT 4: DELTA COMPARATOR</text>
+      <text x="12" y="42" fill="#FFFFFF" class="sans" font-size="12" font-weight="600">Multi-Document Matrix</text>
+      <text x="12" y="56" class="sans sub">Identifies conflicts &amp; delta clauses</text>
+    </g>
+
+    <!-- Agent 5: Study & Quiz -->
+    <g transform="translate(16, 360)">
+      <rect width="208" height="65" rx="8" fill="#0B132B" stroke="#1E293B" stroke-width="1"/>
+      <text x="12" y="22" fill="#34D399" class="mono pill">AGENT 5: STUDY &amp; QUIZ MODE</text>
+      <text x="12" y="42" fill="#FFFFFF" class="sans" font-size="12" font-weight="600">Exam Generator</text>
+      <text x="12" y="56" class="sans sub">Flashcards &amp; concept mastery</text>
+    </g>
+  </g>
+
+  <!-- COLUMN 4: GENERATIVE MULTIMEDIA & CLIENT STUDIO -->
+  <g transform="translate(830, 130)">
+    <rect width="220" height="500" rx="12" fill="url(#primary-box)" stroke="#10B981" stroke-width="1.2"/>
+    <rect x="0" y="0" width="220" height="42" rx="12" fill="#1E293B" stroke="#10B981" stroke-width="1"/>
+    <text x="16" y="26" class="sans title">4. Multimedia &amp; UI Studio</text>
+
+    <!-- Gemini 3.8 Flash -->
+    <g transform="translate(16, 60)">
+      <rect width="188" height="75" rx="8" fill="#0B132B" stroke="#38BDF8" stroke-width="1"/>
+      <text x="10" y="22" fill="#38BDF8" class="mono pill">SYNTHESIS ENGINE</text>
+      <text x="10" y="42" fill="#FFFFFF" class="sans" font-size="12" font-weight="700">Gemini 3.8 Flash</text>
+      <text x="10" y="60" class="sans sub">Grounded structured output</text>
+    </g>
+
+    <!-- Nano Banana Keyframe Image -->
+    <g transform="translate(16, 145)">
+      <rect width="188" height="75" rx="8" fill="#0B132B" stroke="#818CF8" stroke-width="1"/>
+      <text x="10" y="22" fill="#818CF8" class="mono pill">IMAGE KEYFRAMES</text>
+      <text x="10" y="42" fill="#FFFFFF" class="sans" font-size="12" font-weight="700">Nano Banana Model</text>
+      <text x="10" y="60" class="sans sub">16:9 architectural visuals</text>
+    </g>
+
+    <!-- Omni Video Loops -->
+    <g transform="translate(16, 230)">
+      <rect width="188" height="75" rx="8" fill="#0B132B" stroke="#C084FC" stroke-width="1"/>
+      <text x="10" y="22" fill="#C084FC" class="mono pill">AI MOTION VIDEO</text>
+      <text x="10" y="42" fill="#FFFFFF" class="sans" font-size="12" font-weight="700">Omni Flash Video</text>
+      <text x="10" y="60" class="sans sub">60fps ambient neural loops</text>
+    </g>
+
+    <!-- Audio Podcast -->
+    <g transform="translate(16, 315)">
+      <rect width="188" height="75" rx="8" fill="#0B132B" stroke="#34D399" stroke-width="1"/>
+      <text x="10" y="22" fill="#34D399" class="mono pill">VOICE BRIEFING</text>
+      <text x="10" y="42" fill="#FFFFFF" class="sans" font-size="12" font-weight="700">Native Audio TTS</text>
+      <text x="10" y="60" class="sans sub">Studio podcast narration</text>
+    </g>
+
+    <!-- Client Experience -->
+    <g transform="translate(16, 400)">
+      <rect width="188" height="70" rx="8" fill="#0B132B" stroke="#F59E0B" stroke-width="1"/>
+      <text x="10" y="22" fill="#F59E0B" class="mono pill">FRONTEND UI</text>
+      <text x="10" y="42" fill="#FFFFFF" class="sans" font-size="12" font-weight="700">React 19 + Motion</text>
+      <text x="10" y="60" class="sans sub">Cmd+K • 4 Canvas Shaders</text>
+    </g>
+  </g>
+
+  <!-- Flow Arrows connecting columns -->
+  <g stroke="#38BDF8" stroke-width="1.5" fill="none" opacity="0.7">
+    <!-- Col 1 to Col 2 -->
+    <path d="M 260 210 L 290 210" marker-end="url(#arrow)"/>
+    <path d="M 260 300 L 290 300"/>
+    
+    <!-- Col 2 to Col 3 -->
+    <path d="M 530 220 L 560 220"/>
+    <path d="M 530 330 L 560 330"/>
+
+    <!-- Col 3 to Col 4 -->
+    <path d="M 800 240 L 830 240"/>
+    <path d="M 800 350 L 830 350"/>
+  </g>
+</svg>
